@@ -31,7 +31,7 @@ When the task is created, it should be on the top of the list.
 
 User can delete a task, by clicking a delete button on a list on a task. Prior to deletion, confirmation modal is shown
 where user can either click "Cancel", or "Confirm". On cancel, modal is closed while on confirm, modal is closed and task
-is removed from the UI.
+is removed from the UI. In case there are no tasks remaining, user sees a "All done!" texts.
 
 ### 4. Edit Task
 
@@ -47,3 +47,8 @@ filter out tasks that are done, and sort them by higher priority.
 _(bonus)_ User always sees the latest sort/filter combination he had selected, on each consequent visit.
 
 ### (bonus) 6. Multiple task lists
+
+User can create a new task list and in that way track tasks for different purpose. Eg: Work, home chores, hobby etc.
+On a button click "New list", modal opens where user enters the name of the list. On confirm modal is closed and
+user has all tasks on the list view filtered by tasks that belong to this list (initially no tasks are created for the
+new list).
