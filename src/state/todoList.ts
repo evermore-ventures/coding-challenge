@@ -1,4 +1,6 @@
-export default [
+// import { Task } from "../types";
+
+const todoList = [
   {
     id: 1,
     name: 'Read a book',
@@ -36,3 +38,5 @@ export default [
     priority: 'low',
   },
 ];
+
+export default todoList;

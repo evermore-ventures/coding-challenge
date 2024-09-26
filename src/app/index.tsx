@@ -1,24 +1,71 @@
-import { Container, Card, CssBaseline, Typography } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import { useState } from 'react';
+import { Container, CssBaseline, Button, Select, MenuItem } from '@mui/material';
+import styled from '@emotion/styled'
+import TaskList from './components/TaskList';
+import AddTaskListModal from './components/AddTaskListModal';
+import { useAppDispatch, useAppSelector } from '../state/store';
+import { selectTaskList } from '../state/todosSlice';
+
+const StyledDiv = styled.div`
+  .task-list-controls {
+    display: flex;
+
+    .task-lists {
+      margin-left: 1em;
+      height: 2.5em;
+    }
+  }
+`;
 
 function App() {
+  const dispatch = useAppDispatch();
+  const { currentList, lists } = useAppSelector((state) => state.todos);
+  const [addListOpen, setAddListOpen] = useState(false);
+
+  const handleListChange = (e: any) => {
+    dispatch(selectTaskList(e.target.value));
+  };
+
   return (
     <>
       <CssBaseline />
+
       <Container
-        maxWidth={false}
+        maxWidth={'md'}
         disableGutters
         sx={{
-          height: '100vh',
-          background: grey[200],
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          flexDirection: 'column',
+          minWidth: '50em',
+          padding: '1em',
         }}
       >
-        <Card sx={{ p: 4 }}>
-          <Typography variant="subtitle2">Evermore Coding Challenge</Typography>
-        </Card>
+        <StyledDiv>
+        <h1 style={{ textAlign: 'center' }}>Task Manager</h1>
+        <div className='task-list-controls'>
+          <Button
+            style={{
+              width: '13em',
+            }}
+            variant="outlined"
+            onClick={() => setAddListOpen(true)}
+          >
+            Create New List
+          </Button>
+          <Select className="task-lists" defaultValue={currentList} onChange={handleListChange}>
+            {/* <MenuItem value="default">Default</MenuItem> */}
+            {lists.map((list) => (
+              <MenuItem key={list} value={list}>
+                {list}
+              </MenuItem>
+            ))}
+          </Select>
+        </div>
+        <TaskList />
+
+        <AddTaskListModal open={addListOpen} handleClose={() => setAddListOpen(false)} />
+          
+        </StyledDiv>
       </Container>
     </>
   );
