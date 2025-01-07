@@ -1,7 +1,7 @@
 # Evermore coding challenge
 
 This template provides a minimal setup and `all the tools you will need` for this challenge.
-Complete as much as you can or have the knowledge for! On the coding interview, we will ask for a quick demo of
+Complete as much as you can or have the knowledge for! Please try to timebox this to 4-5 hours. On the coding interview, we will ask for a quick demo of
 the challenge, walkthrough of the code and after which we will discuss and challenge your decisions. Good luck!
 
 ## Instructions
