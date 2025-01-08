@@ -1,7 +1,9 @@
 import { Container, Card, CssBaseline, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
+
 function App() {
+
   return (
     <>
       <CssBaseline />
@@ -19,9 +21,11 @@ function App() {
         <Card sx={{ p: 4 }}>
           <Typography variant="subtitle2">Evermore Coding Challenge</Typography>
         </Card>
+ 
       </Container>
     </>
   );
 }
 
 export default App;
+
