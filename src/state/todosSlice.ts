@@ -64,25 +64,11 @@ const todosSlice = createSlice({
       if (action.payload.col === 'state') {
         state[listIdx].todos.sort((a, b) => getStateVal(b.state) - getStateVal(a.state));
       }
-    },
-    filter: (state, action: PayloadAction<{ todoListId: number, stateFilter: string, priorityFilter: string }>) => {
-      const listIdx = state.findIndex(todoList => todoList.id === action.payload.todoListId);
-      if (action.payload.stateFilter === 'all' && action.payload.priorityFilter === 'all') {
-        return;
-      }
-      if (action.payload.stateFilter === 'all') {
-        state[listIdx].todos.filter((todo) => todo.priority === action.payload.priorityFilter);
-      }
-      if (action.payload.priorityFilter === 'all') {
-        state[listIdx].todos.filter((todo) => todo.state === action.payload.stateFilter);
-      }
-      state[listIdx].todos.filter((todo) => todo.state === action.payload.stateFilter && todo.priority === action.payload.priorityFilter);
-
     }
   },
 });
 
-export const { create, edit, delete: remove, changeState, sort, createTodoList, filter } = todosSlice.actions;
+export const { create, edit, delete: remove, changeState, sort, createTodoList } = todosSlice.actions;
 export const selectTest = (state: RootState) => state.todos;
 
 export default todosSlice.reducer;

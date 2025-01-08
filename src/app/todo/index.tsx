@@ -2,7 +2,7 @@ import { CssBaseline, Container, Card, CardContent, FormControl, InputLabel, Men
 import { grey } from "@mui/material/colors";
 import CreateTodoDialog from "../components/create-todo-dialog";
 import { useDispatch, useSelector } from 'react-redux';
-import { filter, selectTest } from '../../state/todosSlice';
+import { selectTest } from '../../state/todosSlice';
 import { RootState } from '../../state/store';
 import TodoList from "../components/todo-list";
 import { useEffect, useState } from "react";
@@ -34,18 +34,19 @@ export default function Todo() {
     }, [stateFilter, priorityFilter, sortCol]);
 
 
-    // const filteredTodos = () => {
-    //   if(stateFilter === 'all' && priorityFilter === 'all') {
-    //     return todos;
-    //   }
-    //   if(stateFilter === 'all') {
-    //     return todos.filter((todo) => todo.priority === priorityFilter);
-    //   }
-    //   if(priorityFilter === 'all') {
-    //     return todos.filter((todo) => todo.state === stateFilter);
-    //   }
-    //   return todos.filter((todo) => todo.state === stateFilter && todo.priority === priorityFilter);  
-    // }
+    const filteredTodos = (todoListId: number, stateFilter: string, priorityFilter: string) => {
+      const listIdx = todos.findIndex(todoList => todoList.id === todoListId);
+      if(stateFilter === 'all' && priorityFilter === 'all') {
+        return todos[listIdx].todos;
+      }
+      if(stateFilter === 'all') {
+        return todos[listIdx].todos.filter((todo) => todo.priority === priorityFilter);
+      }
+      if(priorityFilter === 'all') {
+        return todos[listIdx].todos.filter((todo) => todo.state === stateFilter);
+      }
+      return todos[listIdx].todos.filter((todo) => todo.state === stateFilter && todo.priority === priorityFilter);  
+    }
 
     const dispatch = useDispatch();
 
@@ -84,7 +85,6 @@ export default function Todo() {
                           label="Priority"
                           onChange={(e) => {
                             setStateFilter(e.target.value)
-                            dispatch(filter({ todoListId, stateFilter: e.target.value, priorityFilter }))
                           }}
                       >
                           <MenuItem value={'all'}>All</MenuItem>
@@ -102,7 +102,6 @@ export default function Todo() {
                           label="Priority"
                           onChange={(e) => {
                             setPriorityFilter(e.target.value)
-                            dispatch(filter({ todoListId, stateFilter, priorityFilter: e.target.value }))
                           }}
                       >
                           <MenuItem value={'all'}>All</MenuItem>
@@ -128,7 +127,7 @@ export default function Todo() {
                         </Select>
                     </FormControl>
                   </div>
-                  <TodoList todoListId={todoList.id} todos={todoList.todos} />
+                  <TodoList todoListId={todoList.id} todos={filteredTodos(todoList.id, stateFilter, priorityFilter)} />
               </div>
           </CardContent>    
             ))
