@@ -1,27 +1,15 @@
-import { Container, Card, CssBaseline, Typography } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Home } from '../pages';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <CssBaseline />
-      <Container
-        maxWidth={false}
-        disableGutters
-        sx={{
-          height: '100vh',
-          background: grey[200],
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Card sx={{ p: 4 }}>
-          <Typography variant="subtitle2">Evermore Coding Challenge</Typography>
-        </Card>
-      </Container>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
