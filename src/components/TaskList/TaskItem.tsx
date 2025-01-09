@@ -31,12 +31,10 @@ const TaskItem: React.FC<Props> = ({ task, onEdit, onDelete, onChangeState }) =>
         },
       }}
     >
-      {/* State and Priority Labels Side by Side */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        {/* State (clickable chip) */}
         <Tooltip title={`State: ${task.state}`} arrow>
           <Chip
-            label={task.state.charAt(0).toUpperCase() + task.state.slice(1).replace('_', ' ')} // Capitalize and replace underscores
+            label={task.state.charAt(0).toUpperCase() + task.state.slice(1).replace('_', ' ')}
             onClick={onChangeState}
             size="small"
             sx={{
@@ -58,13 +56,12 @@ const TaskItem: React.FC<Props> = ({ task, onEdit, onDelete, onChangeState }) =>
                     : task.state === 'in_progress'
                     ? theme.palette.state.in_progress
                     : theme.palette.state.todo,
-                opacity: 1, // Ensure opacity remains consistent
+                opacity: 1,
               },
             }}
           />
         </Tooltip>
 
-        {/* Priority Label with Tooltip */}
         <Tooltip title={`Priority: ${task.priority}`} arrow>
           <Chip
             label={task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}
@@ -80,7 +77,6 @@ const TaskItem: React.FC<Props> = ({ task, onEdit, onDelete, onChangeState }) =>
         </Tooltip>
       </Box>
 
-      {/* Task Details and Action Icons Side by Side */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
         {/* Task Name */}
         <Typography
@@ -91,7 +87,6 @@ const TaskItem: React.FC<Props> = ({ task, onEdit, onDelete, onChangeState }) =>
           {task.name}
         </Typography>
 
-        {/* Action Icons */}
         <Box sx={{ display: 'flex' }}>
           <Tooltip title="Edit Task" arrow>
             <IconButton onClick={onEdit} color="primary">

@@ -14,7 +14,6 @@ const ModalManager: React.FC = () => {
 
   return (
     <>
-      {/* Create Task Modal */}
       {modals['createTask']?.isOpen && modals['createTask'].data?.type === 'createTask' && (
         <CreateEditTaskModal
           open={modals['createTask'].isOpen}

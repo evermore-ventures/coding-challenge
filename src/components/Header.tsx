@@ -20,9 +20,9 @@ const Header: React.FC = () => {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: 'rgba(43, 43, 43, 0.7)', // Semi-transparent dark background
-          backdropFilter: 'blur(10px)', // Glass effect
-          boxShadow: 'none', // Minimal design
+          backgroundColor: 'rgba(43, 43, 43, 0.7)',
+          backdropFilter: 'blur(10px)',
+          boxShadow: 'none',
         }}
       >
         <Toolbar
@@ -44,14 +44,14 @@ const Header: React.FC = () => {
           <Button
             onClick={() => setNewListModalOpen(true)}
             sx={{
-              backgroundColor: '#5aac44', // Trello-like green
+              backgroundColor: '#5aac44',
               color: '#fff',
               fontWeight: 'bold',
               borderRadius: 2,
-              textTransform: 'none', // Minimal button text style
+              textTransform: 'none',
               padding: '6px 12px',
               '&:hover': {
-                backgroundColor: '#519839', // Slightly darker on hover
+                backgroundColor: '#519839',
               },
             }}
           >

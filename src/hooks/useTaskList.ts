@@ -32,11 +32,10 @@ export const useTaskList = (listId: string) => {
   };
 
   const filteredTasks = tasks.filter((task) => {
-    // If filterState != 'All', only show tasks with matching state
     if (filterState !== 'All' && task.state.toLowerCase() !== filterState.toLowerCase()) {
       return false;
     }
-    // If filterPriority != 'All', only show tasks with matching priority
+
     if (filterPriority !== 'All' && task.priority.toLowerCase() !== filterPriority.toLowerCase()) {
       return false;
     }

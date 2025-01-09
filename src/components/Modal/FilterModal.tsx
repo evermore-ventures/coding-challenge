@@ -27,7 +27,6 @@ const FilterModal: React.FC<FilterModalProps> = ({ listId, open, onClose }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
-  // Get current filters from Redux
   const filters = useSelector(
     (state: RootState) =>
       state.tasks.filters[listId] || {
@@ -39,7 +38,6 @@ const FilterModal: React.FC<FilterModalProps> = ({ listId, open, onClose }) => {
   const [filterState, setFilterStateValue] = React.useState(filters.filterState);
   const [filterPriority, setFilterPriorityValue] = React.useState(filters.filterPriority);
 
-  // Update local state when the modal opens
   useEffect(() => {
     if (open) {
       setFilterStateValue(filters.filterState);
@@ -67,7 +65,6 @@ const FilterModal: React.FC<FilterModalProps> = ({ listId, open, onClose }) => {
         },
       }}
     >
-      {/* Title with Close Icon */}
       <DialogTitle
         sx={{
           display: 'flex',
@@ -98,7 +95,6 @@ const FilterModal: React.FC<FilterModalProps> = ({ listId, open, onClose }) => {
           gap: 2,
         }}
       >
-        {/* Filter by State */}
         <Box>
           <Typography
             variant="body2"
@@ -129,7 +125,6 @@ const FilterModal: React.FC<FilterModalProps> = ({ listId, open, onClose }) => {
           </Select>
         </Box>
 
-        {/* Filter by Priority */}
         <Box>
           <Typography
             variant="body2"
