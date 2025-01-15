@@ -1,4 +1,4 @@
-import { Container, CssBaseline } from '@mui/material';
+import {CssBaseline, Box } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import TaskList from './components/TaskList';
 import CreateTask from './components/CreateTask';
@@ -14,20 +14,34 @@ function App() {
     <>
       <CssBaseline />
       <TaskProvider>
-      <Container
-        maxWidth={false}
-        disableGutters
-        sx={{
+        <Box
+         sx={{
           height: '100vh',
-          background: grey[200],
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          flexDirection: 'column',
         }}
-      >
-       < CreateTask />
-       <TaskList />
-      </Container>
+        >
+          <Box
+            sx={{
+              padding: '16px',
+              backgroundColor: '#fff',
+              boxShadow: 1,
+              position: 'sticky',
+              top: 0,
+            }}
+          >
+            <CreateTask />
+          </Box>
+          <Box
+            sx={{
+              flex: 1,
+              overflowY: 'auto',
+              padding: '16px',
+            }}
+          >
+            <TaskList />
+          </Box>
+       </Box>
       </TaskProvider>
     </>
   );
