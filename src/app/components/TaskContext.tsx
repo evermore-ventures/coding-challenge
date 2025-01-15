@@ -21,7 +21,6 @@ export const TaskProvider = ({ children }) => {
   }, [tasks]);
 
   const addTask = (task: Task) => {
-    console.log(" Task added",task);
     setTasks([...tasks, task]);
   };
 

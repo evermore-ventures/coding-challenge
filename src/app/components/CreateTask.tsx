@@ -5,7 +5,7 @@ import TaskContext from './TaskContext';
 
 
 
-const CreateTask = () => {
+const CreateTask =()=> {
 
   const { addTask, tasks } = useContext(TaskContext);
   const [open, setOpen] = useState(false);
@@ -29,9 +29,7 @@ const CreateTask = () => {
         priority: newTaskPrioirty,
         state: 'To Do',
       };
-      console.log("Adding task to context:", task);
       addTask(task);
-      console.log("Current tasks in context after addition:", tasks);
       setNewTask('');
       setNewTaskPriority('Low');
       setOpen(false);
