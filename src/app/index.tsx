@@ -1,25 +1,48 @@
-import { Container, Card, CssBaseline, Typography } from '@mui/material';
+import {CssBaseline, Box } from '@mui/material';
 import { grey } from '@mui/material/colors';
+import TaskList from './components/TaskList';
+import CreateTask from './components/CreateTask';
+import { TaskProvider } from './components/TaskContext';
+
+
+
 
 function App() {
+  
+
   return (
     <>
       <CssBaseline />
-      <Container
-        maxWidth={false}
-        disableGutters
-        sx={{
+      <TaskProvider>
+        <Box
+         sx={{
           height: '100vh',
-          background: grey[200],
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          flexDirection: 'column',
         }}
-      >
-        <Card sx={{ p: 4 }}>
-          <Typography variant="subtitle2">Evermore Coding Challenge</Typography>
-        </Card>
-      </Container>
+        >
+          <Box
+            sx={{
+              padding: '16px',
+              backgroundColor: '#fff',
+              boxShadow: 1,
+              position: 'sticky',
+              top: 0,
+            }}
+          >
+            <CreateTask />
+          </Box>
+          <Box
+            sx={{
+              flex: 1,
+              overflowY: 'auto',
+              padding: '16px',
+            }}
+          >
+            <TaskList />
+          </Box>
+       </Box>
+      </TaskProvider>
     </>
   );
 }
