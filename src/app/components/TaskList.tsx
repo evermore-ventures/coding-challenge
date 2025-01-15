@@ -65,15 +65,6 @@ const TaskList = () => {
       return priorityOrder[b.priority] - priorityOrder[a.priority];
     });
 
-
-  if (filteredAndSortedTasks.length === 0) {
-    return (
-      <Box sx={{ textAlign: 'center', marginTop: 4 }}>
-        <Typography variant="h6">No tasks available!</Typography>
-      </Box>
-    );
-  }
-
   return (
     <Box>
       <Box sx={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
@@ -106,7 +97,11 @@ const TaskList = () => {
         </FormControl>
       </Box>
 
-      <List>
+      {filteredAndSortedTasks.length === 0 ? (
+        <Box sx={{ textAlign: 'center', marginTop: 4 }}>
+        <Typography variant="h6">No tasks available!</Typography>
+      </Box>
+      ): (<List>
         {filteredAndSortedTasks.map((task) => (
           <ListItem
             key={task.id}
@@ -148,7 +143,7 @@ const TaskList = () => {
             </Box>
           </ListItem>
         ))}
-      </List>
+      </List>)}
 
       {editTask && (
         <EditTask
